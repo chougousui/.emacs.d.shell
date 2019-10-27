@@ -26,6 +26,9 @@
 			 iedit
 			 which-key
 			 ;; evil-leader
+			 ;; cnfonts
+			 spaceline
+			 winum
 			 ) "Default Packages")
 
 ;; 定义不需要卸载的包列表为自定义的变量
@@ -100,6 +103,12 @@
 (which-key-mode)
 
 ;; 仅仅在evil-mode下才有用
-(global-evil-leader-mode)
+;; (global-evil-leader-mode)
+
+;; 状态栏主题配置
+(require 'spaceline-config)
+
+;; 状态栏上显示窗口号
+(require 'winum)
 
 (provide 'init-packages)

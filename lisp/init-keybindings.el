@@ -29,9 +29,13 @@
 
 ;; evil相关
 ;; 仅仅在evil-mode下有用
-(evil-leader/set-leader "M-m")
-(evil-leader/set-key
-  "p f" 'counsel-projectile-find-file
-  "p p" 'counsel-projectile-switch-project)
+;; (evil-leader/set-leader "M-m")
+;; (evil-leader/set-key
+;;   "p f" 'counsel-projectile-find-file
+;;  "p p" 'counsel-projectile-switch-project)
+
+;; 使用与spacemacs相同的注释掉一行的功能,
+;; 不会与M-;冲突
+(global-set-key (kbd "C-c c l") 'comment-line)
 
 (provide 'init-keybindings)
