@@ -12,15 +12,20 @@
 ;; 定义需要的包
 (defvar choug/packages '(
 			 company
-			 monokai-theme
+			 ;; monokai-theme
 			 hungry-delete
 			 swiper
 			 counsel
+			 counsel-projectile
 			 ;; smex
 			 smartparens
 			 js2-mode
 			 exec-path-from-shell
 			 popwin
+			 expand-region
+			 iedit
+			 which-key
+			 ;; evil-leader
 			 ) "Default Packages")
 
 ;; 定义不需要卸载的包列表为自定义的变量
@@ -44,7 +49,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 开启全局 Company 补全
-;; (global-company-mode t)
+(global-company-mode t)
 (add-hook 'after-init-hook 'global-company-mode)
 
 ;; 加载主题,不喜欢monokai
@@ -80,5 +85,18 @@
 ;; 当打开帮助窗口时,光标自动聚焦到帮助窗口中,按下C-g后又恢复到原来位置
 (require 'popwin)
 (popwin-mode 1)
+
+;; 开启projectile-mode使得切换项目的函数生效
+(counsel-projectile-mode t)
+
+;; 开启expand-region
+(require 'expand-region)
+
+;; 开启iedit
+(require 'iedit)
+
+;; 开启which mode
+(require 'which-key)
+(which-key-mode)
 
 (provide 'init-packages)

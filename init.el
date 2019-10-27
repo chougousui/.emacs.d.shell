@@ -1,6 +1,6 @@
 (setq user-emacs-directory "~/.emacs.d.shell")
 (add-to-list 'load-path "~/.emacs.d.shell/lisp")
-;; (require 'init-funcs)
+(require 'init-funcs)
 (require 'init-packages)
 (require 'init-ui)
 (require 'init-better-defaults)
