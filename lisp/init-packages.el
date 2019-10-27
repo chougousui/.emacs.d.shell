@@ -99,4 +99,7 @@
 (require 'which-key)
 (which-key-mode)
 
+;; 仅仅在evil-mode下才有用
+(global-evil-leader-mode)
+
 (provide 'init-packages)
