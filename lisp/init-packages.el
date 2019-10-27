@@ -6,13 +6,13 @@
   (require 'package)
   (package-initialize)
   (add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+             '("melpa-stable" . "https://melpa.org/packages/") t)
   )
 
 ;; 定义需要的包
 (defvar choug/packages '(
 			 company
-			 ;; monokai-theme
+			 spacemacs-theme
 			 hungry-delete
 			 swiper
 			 counsel
@@ -53,7 +53,7 @@
 (add-hook 'after-init-hook 'global-company-mode)
 
 ;; 加载主题,不喜欢monokai
-;; (load-theme 'monokai t)
+(load-theme 'spacemacs-dark t)
 
 ;; 一次删除多个空格
 (require 'hungry-delete)
