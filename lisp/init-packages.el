@@ -17,7 +17,7 @@
 			 swiper
 			 counsel
 			 counsel-projectile
-			 ;; smex
+			 smex             ;; counsel-M-x 用这个统计使用频率,安装上即可
 			 smartparens
 			 js2-mode
 			 exec-path-from-shell
