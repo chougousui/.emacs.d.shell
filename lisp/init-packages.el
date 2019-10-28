@@ -54,6 +54,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 开启全局 Company 补全
 (use-package company
+  :ensure t
   :defer t
   :init (global-company-mode)
   :config
@@ -72,8 +73,11 @@
 (load-theme 'spacemacs-dark t)
 
 ;; 一次删除多个空格
-(require 'hungry-delete)
-(global-hungry-delete-mode)
+(use-package hungry-delete
+  :ensure t
+  :defer t
+  :init (global-hungry-delete-mode)
+  :diminish hungry-delete-mode)
 
 ;; swiper的依赖项目
 (ivy-mode 1)
@@ -85,8 +89,16 @@
 ;; (global-set-key (kbd "M-x") 'smex)
 
 ;; 自动括号配对
-(require 'smartparens-config)
-(smartparens-global-mode t)
+(use-package smartparens
+  :ensure t
+  :defer t
+  :init
+  (progn
+    (require 'smartparens-config)
+    (smartparens-global-mode t))
+  :config
+  (setq sp-show-pair-from-inside t)
+  :diminish smartparens-mode)
 
 ;; 定义打开特定文件的模式
 (setq auto-mode-alist
@@ -99,6 +111,7 @@
   (exec-path-from-shell-initialize))
 
 ;; 当打开帮助窗口时,光标自动聚焦到帮助窗口中,按下C-g后又恢复到原来位置
+;; 使用use-package不能生效
 (require 'popwin)
 (popwin-mode 1)
 
