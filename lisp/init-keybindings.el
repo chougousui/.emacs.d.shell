@@ -45,4 +45,7 @@
   (define-key company-active-map (kbd "C-n") #'company-select-next)
   (define-key company-active-map (kbd "C-p") #'company-select-previous))
 
+;; 切换到刚才打开过的buffer
+(global-set-key (kbd "C-c <tab>") 'choug/goto-last-buffer)
+
 (provide 'init-keybindings)
