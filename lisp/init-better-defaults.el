@@ -27,4 +27,10 @@
 ;; 默认使用光标下的字符串作为helm-projectile-rg的搜索对象
 (setq counsel-projectile-rg-initial-input '(ivy-thing-at-point))
 
+;; 简化默认自动补全后端
+(setq company-backends
+      '(company-files
+	(company-semantic company-dabbrev-code company-gtags company-etags company-keywords)
+	company-dabbrev))
+
 (provide 'init-better-defaults)
