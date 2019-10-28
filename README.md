@@ -28,3 +28,6 @@ alias em="emacs -q --load ~/.emacs.d.shell/init.el -nw"
 - winum
 - spaceline
 - etc.
+
+### Some acceleration methods
+1. If get messages like `Source file '/home/USER/.emacs.d/elpa/....el' newer than byte-compiled file`, call `M-x byte-recompile-directory RET ~/.emacs.d.shell/elpa/`
