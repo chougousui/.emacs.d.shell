@@ -4,13 +4,14 @@
 ;; 配置使用melpa源
 (when (>= emacs-major-version 24)
   (require 'package)
-  (package-initialize)
   (add-to-list 'package-archives
              '("melpa-stable" . "https://melpa.org/packages/") t)
   )
 
 ;; 定义需要的包
 (defvar choug/packages '(
+			 bind-key
+			 use-package
 			 company
 			 spacemacs-theme
 			 hungry-delete
@@ -52,8 +53,20 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 开启全局 Company 补全
-(global-company-mode t)
-(add-hook 'after-init-hook 'global-company-mode)
+(use-package company
+  :defer t
+  :init (global-company-mode)
+  :config
+  (progn
+    (setq company-idle-delay 0.08)
+    (setq company-backends
+      '(company-files
+	(company-semantic company-dabbrev-code company-gtags company-etags company-keywords)
+	company-dabbrev)))
+  :bind (:map company-active-map
+	      ("C-n" . company-select-next)
+	      ("C-p" . company-select-previous))
+  :diminish company-mode)
 
 ;; 加载主题,不喜欢monokai
 (load-theme 'spacemacs-dark t)

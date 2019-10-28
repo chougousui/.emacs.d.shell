@@ -38,13 +38,6 @@
 ;; 不会与M-;冲突
 (global-set-key (kbd "C-c c l") 'comment-line)
 
-;; company候选词选择
-(with-eval-after-load 'company
-  (define-key company-active-map (kbd "M-n") nil)
-  (define-key company-active-map (kbd "M-p") nil)
-  (define-key company-active-map (kbd "C-n") #'company-select-next)
-  (define-key company-active-map (kbd "C-p") #'company-select-previous))
-
 ;; 切换到刚才打开过的buffer
 (global-set-key (kbd "C-c <tab>") 'choug/goto-last-buffer)
 
