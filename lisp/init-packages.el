@@ -55,86 +55,136 @@
 ;; 开启全局 Company 补全
 (use-package company
   :ensure t
-  :defer t
   :init (global-company-mode)
   :config
-  (progn
-    (setq company-idle-delay 0.08)
-    (setq company-backends
-      '(company-files
-	(company-semantic company-dabbrev-code company-gtags company-etags company-keywords)
-	company-dabbrev)))
+  (setq company-idle-delay 0.08)
+  (setq company-backends
+	'(company-files
+	  (company-semantic company-dabbrev-code company-gtags company-etags company-keywords)
+	  company-dabbrev))
   :bind (:map company-active-map
 	      ("C-n" . company-select-next)
 	      ("C-p" . company-select-previous))
   :diminish company-mode)
 
-;; 加载主题,不喜欢monokai
-(load-theme 'spacemacs-dark t)
-
 ;; 一次删除多个空格
 (use-package hungry-delete
   :ensure t
-  :defer t
-  :init (global-hungry-delete-mode)
+  :config (global-hungry-delete-mode)
   :diminish hungry-delete-mode)
 
 ;; swiper的依赖项目
-(ivy-mode 1)
-(setq ivy-use-virtual-buffers t)
-(setq enable-recursive-minibuffers t)
+(use-package swiper
+  :ensure t
+  :bind ("C-s" . 'swiper)
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq enable-recursive-minibuffers t)
+  (defun choug/swiper-dwim ()
+    (interactive)
+    (swiper (ivy-thing-at-point)))
+  (bind-key "C-S-s" 'choug/swiper-dwim)
+  )
+
+;; counsel相关
+(use-package counsel
+  :ensure t
+  :bind (("M-x" . 'counsel-M-x)
+	 ("C-M-s" . 'counsel-projectile-rg)
+	 ("C-x C-f" . 'counsel-find-file)
+	 ("C-h f" . 'counsel-describe-function)
+	 ("C-h v" . 'counsel-describe-variable)
+	 ("C-c f r" . 'counsel-recentf))
+  )
+
+(use-package counsel-projectile
+  :ensure t
+  :bind (("C-c p f" . 'counsel-projectile-find-file)
+	 ("C-c p p" . 'counsel-projectile-switch-project))
+  :config
+  (counsel-projectile-mode t)
+  (setq counsel-projectile-rg-initial-input '(ivy-thing-at-point))
+  )
 
 ;; 配置smex,以后可能会被ivy等代替
 ;; (smex-initialize)
 ;; (global-set-key (kbd "M-x") 'smex)
+
+;; 主题配置
+(use-package spacemacs-theme
+  :ensure t
+  :defer t
+  :init
+  (load-theme 'spacemacs-dark t))
 
 ;; 自动括号配对
 (use-package smartparens
   :ensure t
   :defer t
   :init
-  (progn
-    (require 'smartparens-config)
-    (smartparens-global-mode t))
+  (require 'smartparens-config)
   :config
   (setq sp-show-pair-from-inside t)
+  (smartparens-global-mode t)
   :diminish smartparens-mode)
 
 ;; 定义打开特定文件的模式
-(setq auto-mode-alist
-      (append
-       '(("\\.js\\'" . js2-mode))
-       auto-mode-alist))
+(use-package js2-mode
+  :defer t
+  :mode "\\.js\\'")
 
 ;; emacs继承环境变量
-(when (memq window-system '(mac ns x))
-  (exec-path-from-shell-initialize))
+(use-package exec-path-from-shell
+  :ensure t
+  :if (and (eq system-type 'darwin) (display-graphic-p))
+  :config
+  (when (string-match-p "/zsh$" (getenv "SHELL"))
+    ;; Use a non-interactive login shell.  A login shell, because my
+    ;; environment variables are mostly set in `.zprofile'.
+    (setq exec-path-from-shell-arguments '("-l")))
+
+  (exec-path-from-shell-initialize)
+  )
+  
 
 ;; 当打开帮助窗口时,光标自动聚焦到帮助窗口中,按下C-g后又恢复到原来位置
-;; 使用use-package不能生效
-(require 'popwin)
-(popwin-mode 1)
-
-;; 开启projectile-mode使得切换项目的函数生效
-(counsel-projectile-mode t)
+(use-package popwin
+  :ensure t
+  :config
+  (popwin-mode 1))
 
 ;; 开启expand-region
-(require 'expand-region)
+(use-package expand-region
+  :ensure t
+  :bind ("C-=" . 'er/expand-region))
 
 ;; 开启iedit
-(require 'iedit)
+(use-package iedit
+  :ensure t
+  :bind ("C-;" . iedit-mode)
+  :commands (iedit-mode))
 
-;; 开启which mode
-(require 'which-key)
-(which-key-mode)
-
-;; 仅仅在evil-mode下才有用
-;; (global-evil-leader-mode)
+;; 开启which key mode
+(use-package which-key
+  :ensure t
+  :config (which-key-mode)
+  :diminish which-key-mode)
 
 ;; 状态栏主题配置
-(require 'spaceline-config)
+(use-package spaceline
+  :ensure t
+  :config
+  (require 'spaceline-config)
+  (spaceline-spacemacs-theme)
+  (setq powerline-default-separator 'wave))
 
 ;; 状态栏上显示窗口号
-(require 'winum)
+(use-package winum
+  :ensure t
+  :config
+  (setq winum-auto-setup-mode-line nil)
+  (winum-mode)
+  :diminish winum-mode)
 
 (provide 'init-packages)

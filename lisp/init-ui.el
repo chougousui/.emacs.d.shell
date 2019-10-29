@@ -39,14 +39,4 @@
 ;; 高亮当前行
 (global-hl-line-mode t)
 
-;; 状态栏使用spacemacs自带的spaceline,图更新多
-(spaceline-spacemacs-theme)
-(setq powerline-default-separator 'wave)
-
-;; 显示窗口号
-;; 配置spaceline前方(归winum管理)不显示窗口号
-;; 因为spaceline自己会显示窗口号
-(setq winum-auto-setup-mode-line nil)
-(winum-mode)
-
 (provide 'init-ui)

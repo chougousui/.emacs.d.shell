@@ -3,17 +3,6 @@
   (interactive)
   (find-file "~/.emacs.d.shell/init.el"))
 
-;; swiper, do what I mean
-(defun choug/swiper-dwim ()
-  (interactive)
-  (swiper (if (region-active-p)
-              (buffer-substring-no-properties
-               (region-beginning)
-               (region-end))
-            (thing-at-point 'symbol)
-            ))
-  )
-
 ;; 切换到刚才打开过的buffer
 (defun choug/goto-last-buffer ()
   "Switch to previously open buffer.
