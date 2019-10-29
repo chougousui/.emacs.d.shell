@@ -13,6 +13,6 @@
 (global-set-key (kbd "C-c c l") 'comment-line)
 
 ;; 切换到刚才打开过的buffer
-(global-set-key (kbd "C-c <tab>") 'choug/goto-last-buffer)
+(global-set-key (kbd "C-c TAB") 'choug/goto-last-buffer)
 
 (provide 'init-keybindings)
