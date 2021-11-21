@@ -2,31 +2,31 @@
 (when (>= emacs-major-version 24)
   (require 'package)
   (add-to-list 'package-archives
-             '("melpa-stable" . "https://melpa.org/packages/") t)
+               '("melpa" . "https://melpa.org/packages/") t)
   )
 
 ;; 定义需要的包
 (defvar choug/packages '(
-			 bind-key
-			 use-package
-			 company
-			 spacemacs-theme
-			 hungry-delete
-			 swiper
-			 counsel
-			 counsel-projectile
-			 smex             ;; counsel-M-x 用这个统计使用频率,安装上即可
-			 smartparens
-			 exec-path-from-shell
-			 popwin
-			 expand-region
-			 iedit
-			 which-key
-			 ;; evil-leader
-			 ;; cnfonts
-			 spaceline
-			 winum
-			 ) "Default Packages")
+       bind-key
+       use-package
+       company
+       spacemacs-theme
+       hungry-delete
+       swiper
+       counsel
+       counsel-projectile
+       smex             ;; counsel-M-x 用这个统计使用频率,安装上即可
+       smartparens
+       exec-path-from-shell
+       popwin
+       expand-region
+       iedit
+       which-key
+       ;; evil-leader
+       ;; cnfonts
+       spaceline
+       winum
+       ) "Default Packages")
 
 ;; 定义不需要卸载的包列表为自定义的变量
 ;; 在使用package-autoremove时不会自动删除
@@ -55,12 +55,12 @@
   :config
   (setq company-idle-delay 0.08)
   (setq company-backends
-	'(company-files
-	  (company-semantic company-dabbrev-code company-gtags company-etags company-keywords)
-	  company-dabbrev))
+  '(company-files
+    (company-semantic company-dabbrev-code company-gtags company-etags company-keywords)
+    company-dabbrev))
   :bind (:map company-active-map
-	      ("C-n" . company-select-next)
-	      ("C-p" . company-select-previous))
+        ("C-n" . company-select-next)
+        ("C-p" . company-select-previous))
   :diminish company-mode)
 
 ;; 一次删除多个空格
@@ -87,17 +87,17 @@
 (use-package counsel
   :ensure t
   :bind (("M-x" . 'counsel-M-x)
-	 ("C-M-s" . 'counsel-projectile-rg)
-	 ("C-x C-f" . 'counsel-find-file)
-	 ("C-h f" . 'counsel-describe-function)
-	 ("C-h v" . 'counsel-describe-variable)
-	 ("C-c f r" . 'counsel-recentf))
+   ("C-M-s" . 'counsel-projectile-rg)
+   ("C-x C-f" . 'counsel-find-file)
+   ("C-h f" . 'counsel-describe-function)
+   ("C-h v" . 'counsel-describe-variable)
+   ("C-c f r" . 'counsel-recentf))
   )
 
 (use-package counsel-projectile
   :ensure t
   :bind (("C-c p f" . 'counsel-projectile-find-file)
-	 ("C-c p p" . 'counsel-projectile-switch-project))
+   ("C-c p p" . 'counsel-projectile-switch-project))
   :config
   (counsel-projectile-mode t)
   (setq counsel-projectile-rg-initial-input '(ivy-thing-at-point))
@@ -142,7 +142,7 @@
 
   (exec-path-from-shell-initialize)
   )
-  
+
 
 ;; 当打开帮助窗口时,光标自动聚焦到帮助窗口中,按下C-g后又恢复到原来位置
 (use-package popwin
