@@ -1,10 +1,3 @@
-;; 配置使用melpa源
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (add-to-list 'package-archives
-               '("melpa" . "https://melpa.org/packages/") t)
-  )
-
 ;; 定义需要的包
 (defvar choug/packages '(
        bind-key
