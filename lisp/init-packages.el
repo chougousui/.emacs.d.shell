@@ -1,6 +1,3 @@
-;; 为使用common lisp的语法中的loop函数
-(require 'cl)
-
 ;; 配置使用melpa源
 (when (>= emacs-major-version 24)
   (require 'package)
@@ -37,9 +34,9 @@
 
 ;; 检测是否所有包均被安装
 (defun choug/packages-installed-p ()
-  (loop for pkg in choug/packages
-	when (not (package-installed-p pkg)) do (return nil)
-	finally (return t)))
+  (cl-loop for pkg in choug/packages
+  when (not (package-installed-p pkg)) do (cl-return nil)
+  finally (cl-return t)))
 
 ;; 如果有包没有安装,则安装之
 (unless (choug/packages-installed-p)
