@@ -22,7 +22,7 @@
  :font (font-spec :name "-*-Source Code Pro-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1"
                   :weight 'normal
                   :slant 'normal
-                  :size 15.0))
+                  :size 12.5))
 (dolist (charset '(kana han symbol cjk-misc bopomofo))
   (if (display-graphic-p)
       (set-fontset-font
@@ -31,7 +31,7 @@
        (font-spec :name "-*-STKaiti-normal-normal-normal-*-*-*-*-*-p-0-iso10646-1"
 		  :weight 'normal
 		  :slant 'normal
-		  :size 18.0))))
+		  :size 15.5))))
 
 ;; 开启默认全屏
 (setq initial-frame-alist (quote ((fullscreen . maximized))))

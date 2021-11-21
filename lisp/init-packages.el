@@ -20,7 +20,6 @@
 			 counsel-projectile
 			 smex             ;; counsel-M-x 用这个统计使用频率,安装上即可
 			 smartparens
-			 js2-mode
 			 exec-path-from-shell
 			 popwin
 			 expand-region
@@ -129,10 +128,10 @@
   (smartparens-global-mode t)
   :diminish smartparens-mode)
 
-;; 定义打开特定文件的模式
-(use-package js2-mode
-  :defer t
-  :mode "\\.js\\'")
+;; 定义打开特定文件的模式,但不打算在shell中查看js文件
+;; (use-package js2-mode
+;;   :defer t
+;;   :mode "\\.js\\'")
 
 ;; emacs继承环境变量
 (use-package exec-path-from-shell
@@ -186,5 +185,6 @@
   (setq winum-auto-setup-mode-line nil)
   (winum-mode)
   :diminish winum-mode)
+(use-package ansi-color)
 
 (provide 'init-packages)
