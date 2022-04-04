@@ -7,7 +7,13 @@
                '("melpa" . "https://melpa.org/packages/") t)
   )
 
+;; 提前加载一些位于custom.el中的自定义变量
 (setq user-emacs-directory "~/.emacs.d.shell")
+(setq custom-file (expand-file-name "lisp/custom.el" user-emacs-directory))
+(load-file custom-file)
+
+;; 考虑到自定义变量中定义了安装依赖包的位置
+;; 故接下来加载位于lisp下的一些自定义文件
 (add-to-list 'load-path "~/.emacs.d.shell/lisp")
 (package-initialize)
 
@@ -21,5 +27,3 @@
 (require 'init-better-defaults)
 (require 'init-org)
 (require 'init-keybindings)
-(setq custom-file (expand-file-name "lisp/custom.el" user-emacs-directory))
-;; (load-file custom-file)

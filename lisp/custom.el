@@ -8,6 +8,7 @@
     ("5f27195e3f4b85ac50c1e2fac080f0dd6535440891c54fcfa62cdcefedf56b1b" default)))
  ;; gccemacs下消除界面上的大量warning
  '(warning-suppress-types '((comp)))
+ '(package-user-dir "~/.emacs.d.shell/elpa")
  )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
