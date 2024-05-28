@@ -19,4 +19,7 @@
 ;; 使用y或n简化回答方式
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; tab键为插入空格
+(setq-default indent-tabs-mode nil)
+
 (provide 'init-better-defaults)
