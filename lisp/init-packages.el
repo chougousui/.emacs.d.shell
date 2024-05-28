@@ -4,7 +4,6 @@
        use-package
        company
        spacemacs-theme
-       hungry-delete
        swiper
        counsel
        counsel-projectile
@@ -55,12 +54,6 @@
         ("C-n" . company-select-next)
         ("C-p" . company-select-previous))
   :diminish company-mode)
-
-;; 一次删除多个空格
-(use-package hungry-delete
-  :ensure t
-  :config (global-hungry-delete-mode)
-  :diminish hungry-delete-mode)
 
 ;; swiper的依赖项目
 (use-package swiper
