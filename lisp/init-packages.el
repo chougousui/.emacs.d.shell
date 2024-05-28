@@ -18,6 +18,9 @@
        ;; cnfonts
        spaceline
        winum
+       yaml-mode
+       csv-mode
+       toml-mode
        ) "Default Packages")
 
 ;; 定义不需要卸载的包列表为自定义的变量
