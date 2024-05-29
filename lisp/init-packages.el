@@ -21,6 +21,7 @@
        yaml-mode
        csv-mode
        toml-mode
+       go-mode
        ) "Default Packages")
 
 ;; 定义不需要卸载的包列表为自定义的变量
