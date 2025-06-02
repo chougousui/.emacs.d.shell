@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 ;; 关闭工具栏，tool-bar-mode 即为一个 Minor Mode
 (tool-bar-mode -1)
 
@@ -29,9 +31,9 @@
        (frame-parameter nil 'font)
        charset
        (font-spec :name "-*-STKaiti-normal-normal-normal-*-*-*-*-*-p-0-iso10646-1"
-		  :weight 'normal
-		  :slant 'normal
-		  :size 15.5))))
+                  :weight 'normal
+                  :slant 'normal
+                  :size 15.5))))
 
 ;; 开启默认全屏
 (setq initial-frame-alist (quote ((fullscreen . maximized))))

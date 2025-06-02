@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 ;; 这一行代码，将函数 open-init-file 绑定到 <f2> 键上
 (global-set-key (kbd "C-c f e d") 'open-init-file)
 

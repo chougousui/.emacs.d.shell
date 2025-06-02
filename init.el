@@ -1,3 +1,8 @@
+;;; -*- lexical-binding: t; -*-
+
+;; 静音elpa第三方文件夹中关于lexical-binding的警告
+(setq warning-suppress-types '((files)))
+
 ;; 第一次使用该配置文件会找不到use-package的位置
 ;; 为了使用package-list-package时能够看到use-package
 ;; 事先添加melpa源
@@ -20,6 +25,9 @@
 ;; This is only needed once, near the top of the file
 (eval-when-compile
   (require 'use-package))
+
+;; 减少变量未定义的警告
+(setq native-comp-jit-suck-context t)
 
 (require 'init-funcs)
 (require 'init-packages)

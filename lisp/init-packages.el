@@ -1,28 +1,30 @@
+;;; -*- lexical-binding: t; -*-
+
 ;; 定义需要的包
 (defvar choug/packages '(
-       bind-key
-       use-package
-       company
-       spacemacs-theme
-       swiper
-       counsel
-       counsel-projectile
-       smex             ;; counsel-M-x 用这个统计使用频率,安装上即可
-       smartparens
-       exec-path-from-shell
-       popwin
-       expand-region
-       iedit
-       which-key
-       ;; evil-leader
-       ;; cnfonts
-       spaceline
-       winum
-       yaml-mode
-       csv-mode
-       toml-mode
-       go-mode
-       ) "Default Packages")
+                         bind-key
+                         use-package
+                         company
+                         spacemacs-theme
+                         swiper
+                         counsel
+                         counsel-projectile
+                         smex             ;; counsel-M-x 用这个统计使用频率,安装上即可
+                         smartparens
+                         exec-path-from-shell
+                         popwin
+                         expand-region
+                         iedit
+                         which-key
+                         ;; evil-leader
+                         ;; cnfonts
+                         spaceline
+                         winum
+                         yaml-mode
+                         csv-mode
+                         toml-mode
+                         go-mode
+                         ) "Default Packages")
 
 ;; 定义不需要卸载的包列表为自定义的变量
 ;; 在使用package-autoremove时不会自动删除
@@ -31,8 +33,8 @@
 ;; 检测是否所有包均被安装
 (defun choug/packages-installed-p ()
   (cl-loop for pkg in choug/packages
-  when (not (package-installed-p pkg)) do (cl-return nil)
-  finally (cl-return t)))
+           when (not (package-installed-p pkg)) do (cl-return nil)
+           finally (cl-return t)))
 
 ;; 如果有包没有安装,则安装之
 (unless (choug/packages-installed-p)
@@ -51,12 +53,12 @@
   :config
   (setq company-idle-delay 0.08)
   (setq company-backends
-  '(company-files
-    (company-semantic company-dabbrev-code company-gtags company-etags company-keywords)
-    company-dabbrev))
+        '(company-files
+          (company-semantic company-dabbrev-code company-gtags company-etags company-keywords)
+          company-dabbrev))
   :bind (:map company-active-map
-        ("C-n" . company-select-next)
-        ("C-p" . company-select-previous))
+              ("C-n" . company-select-next)
+              ("C-p" . company-select-previous))
   :diminish company-mode)
 
 ;; swiper的依赖项目
@@ -77,17 +79,17 @@
 (use-package counsel
   :ensure t
   :bind (("M-x" . 'counsel-M-x)
-   ("C-M-s" . 'counsel-projectile-rg)
-   ("C-x C-f" . 'counsel-find-file)
-   ("C-h f" . 'counsel-describe-function)
-   ("C-h v" . 'counsel-describe-variable)
-   ("C-c f r" . 'counsel-recentf))
+         ("C-M-s" . 'counsel-projectile-rg)
+         ("C-x C-f" . 'counsel-find-file)
+         ("C-h f" . 'counsel-describe-function)
+         ("C-h v" . 'counsel-describe-variable)
+         ("C-c f r" . 'counsel-recentf))
   )
 
 (use-package counsel-projectile
   :ensure t
   :bind (("C-c p f" . 'counsel-projectile-find-file)
-   ("C-c p p" . 'counsel-projectile-switch-project))
+         ("C-c p p" . 'counsel-projectile-switch-project))
   :config
   (counsel-projectile-mode t)
   (setq counsel-projectile-rg-initial-input '(ivy-thing-at-point))

@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 ;; 快速打开配置文件
 (defun open-init-file()
   (interactive)
@@ -10,9 +12,9 @@ Repeated invocations toggle between the two most recently open buffers."
   (interactive)
   (switch-to-buffer (other-buffer (current-buffer) 1)))
 
-(provide 'init-funcs)
-
 ;; 对于带有ansi色彩标记的文本(比如rails等web框架的log),使用此函数显示颜色
 (defun choug/display-ansi-colors ()
   (interactive)
   (ansi-color-apply-on-region (point-min) (point-max)))
+
+(provide 'init-funcs)

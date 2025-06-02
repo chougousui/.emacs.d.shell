@@ -13,8 +13,8 @@ git clone https://github.com/chougousui/.emacs.d.shell.git
 ### Suggested zsh alias
 
 ```
-alias ema="emacs -q --load ~/.emacs.d.shell/init.el"
-alias em="emacs -q --load ~/.emacs.d.shell/init.el -nw"
+alias ema="emacs --init-directory ~/.emacs.d.shell"
+alias em="emacs -nw --init-directory ~/.emacs.d.shell/init.el"
 ```
 
 ### Features

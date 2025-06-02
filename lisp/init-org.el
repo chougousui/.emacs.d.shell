@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 (use-package org
   :defer t
   :config
@@ -9,9 +11,9 @@
   (setq org-startup-folded 'content)
   ;; todo增加选项
   (setq org-todo-keywords
-	'((sequence "TODO" "|" "DONE" "LATER")))
+        '((sequence "TODO" "|" "DONE" "LATER")))
   (setq org-todo-keyword-faces
-	'(("LATER" . "brown")))
+        '(("LATER" . "brown")))
   ;; 自定义粘贴函数,目前有点不好用
   (defun choug/paste-html2org-clipboard()
     "Convert clipboard contents from HTML to Org and then past."
@@ -24,8 +26,8 @@
     (if (not (string-equal buffer-file-name "/Users/choug/Dropbox/E560_ubuntu/notes/愿望清单.org"))
         (org-shifttab 2)))
   (add-hook 'org-mode-hook
-  	    (lambda ()
-  	      (add-hook 'find-file-hook 'choug/indent-top-2 nil 'make-it-local)))
+            (lambda ()
+              (add-hook 'find-file-hook 'choug/indent-top-2 nil 'make-it-local)))
   )
 
 (provide 'init-org)

@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 ;; 自动加载磁盘上已经修改的文件
 (global-auto-revert-mode t)
 
@@ -22,6 +24,5 @@
 ;; tab键为插入空格,并且tab宽度为4个空格
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
-
 
 (provide 'init-better-defaults)
